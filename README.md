@@ -94,3 +94,21 @@ Into something like
 		//some logic....
 	}
 	
+	
+	
+The `DependsOn` attributes forces a `RaisePropertyChanged` to the decorated property, when the dependant properties are changes. In the example above, the property `FullName` will have a `RaisePropertyChanged` every time the `FirstName` or `LastName`are changed.
+We can also apply the `DependsOn` to parameterless methods. Instead of Raising the property changed event, the methods are simply invoqued.
+
+This behaviour is intended for ObservableCollection also. For this first version, we only 'look' at changes of the collection itself (add, remove, reset).
+
+	public ObservableCollection<string> NamesList
+	{
+		get { return _namesList; }
+	}
+	private readonly ObservableCollection<string> _namesList = new ObservableCollection<string>();
+
+	[DependsOn("NamesList")]
+	public int NamesListCounter
+	{
+		get { return NamesList.Count; }
+	}

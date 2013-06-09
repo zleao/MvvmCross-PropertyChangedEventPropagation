@@ -108,8 +108,8 @@ This behaviour is intended for ObservableCollection also. For this first version
 	
 ## Possible improvements to this approach
 
-	1. **The event hook should be done using WeakReferences**. 
-	Slodge allready stated this in https://github.com/slodge/MvvmCross/issues/300  This was something that I thought about and will implement soon.
+- **The event hook should be done using WeakReferences**. 
+Slodge allready stated this in https://github.com/slodge/MvvmCross/issues/300  This was something that I thought about and will implement soon.
 
-	2. **Add the ability to 'listen' to changes of the items inside an ObservableCollection**
-	The property names of the raised events, should have the following name: `<ListName>.<PropertyName>`
+- **Add the ability to 'listen' to changes of the items inside an ObservableCollection**
+The property names of the raised events, should have the following name: `<ListName>.<PropertyName>`

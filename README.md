@@ -112,4 +112,4 @@ This behaviour is intended for ObservableCollection also. For this first version
 Slodge allready stated this in https://github.com/slodge/MvvmCross/issues/300  This was something that I thought about and will implement soon.
 
 - **Add the ability to 'listen' to changes of the items inside an ObservableCollection**
-The property names of the raised events, should have the following name: `<ListName>.<PropertyName>`
+The property names of the raised events, should have the following name: `<ObservableCollectionName>.<PropertyName>`

@@ -1,5 +1,4 @@
 #PropertyChanged Event Propagation
-=================================
 
 This is my approach for enabling property changed event propagation across the ViewModels in an Mvvm approach.
 The goal is to be able to use attributes decoration to map dependencies between properties and/or methods within the ViewModel
@@ -19,7 +18,6 @@ The main goal is to transform something like this:
 				_fristName = value;
 				RaisePropertyChanged(() => FirstName);
 				RaisePropertyChanged(() => FullName);
-				IncrementFullNameChangedCounter();
 			}
 		}
 	}
@@ -35,7 +33,6 @@ The main goal is to transform something like this:
 				_lastName = value;
 				RaisePropertyChanged(() => LastName);
 				RaisePropertyChanged(() => FullName);
-				IncrementFullNameChangedCounter();
 			}
 		}
 	}
@@ -44,11 +41,6 @@ The main goal is to transform something like this:
 	public string FullName
 	{
 		get { return FirstName + " " + LastName; }
-	}
-	
-	public void IncrementFullNameChangedCounter()
-	{
-		//some logic....
 	}
 	
 Into something like
@@ -88,17 +80,17 @@ Into something like
 		get { return FirstName + " " + LastName; }
 	}
 	
-	[DependsOn("FullName")]
-	public void IncrementFullNameChangedCounter()
-	{
-		//some logic....
-	}
-	
-	
 	
 The `DependsOn` attributes forces a `RaisePropertyChanged` to the decorated property, when the dependant properties are changes. In the example above, the property `FullName` will have a `RaisePropertyChanged` every time the `FirstName` or `LastName`are changed.
 We can also apply the `DependsOn` to parameterless methods. Instead of Raising the property changed event, the methods are simply invoqued.
 
+	[DependsOn("FullName")]
+	public void IncrementFullNameChangedCounter()
+	{
+		FullNameChangedCounter++;
+	}
+		
+		
 This behaviour is intended for ObservableCollection also. For this first version, we only 'look' at changes of the collection itself (add, remove, reset).
 
 	public ObservableCollection<string> NamesList
@@ -112,3 +104,10 @@ This behaviour is intended for ObservableCollection also. For this first version
 	{
 		get { return NamesList.Count; }
 	}
+
+	
+## Possible improvments to this approach
+
+1 - **Th event hook should be done using `Weakreferences` **. Slodge allready stated this in https://github.com/slodge/MvvmCross/issues/300  This was something that I thought about and will implement soon.
+
+2 - **Add the ability to 'listen' to changes of the items inside an ObservableCollection**

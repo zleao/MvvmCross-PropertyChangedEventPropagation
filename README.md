@@ -5,6 +5,18 @@ The goal is to be able to use attributes decoration to map dependencies between 
 
 This is a follow up of a request made in the MvvmCross repo: https://github.com/slodge/MvvmCross/issues/300
 
+## Version Info
+- **MvvmCross: 5.6.3**
+- **Android SDK: 7.0 Nougat**
+	
+## Releases
+- **2018/01/07** Code cleanup and update to Mvx 5.6.3
+	- Updated all nuget packages
+	- Updated projects to newer versions of portable and Droid SDK
+	- Cleaned up the repository
+- **2014/04/14** First version of the project.
+
+## Description
 
 The main goal is to transform something like this:
 
@@ -106,10 +118,10 @@ This behaviour is intended for ObservableCollection also. For this first version
 	}
 
 	
-## Possible improvements to this approach
+## Future Releases
 
 - **The event hook should be done using WeakReferences**. 
-Slodge allready stated this in https://github.com/slodge/MvvmCross/issues/300  This was something that I thought about and will implement soon.
+Slodge allready stated this in https://github.com/slodge/MvvmCross/issues/300
 
 - **Add the ability to 'listen' to changes of the items inside an ObservableCollection**
 The property names of the raised events, should have the following name: `<ObservableCollectionName>.<PropertyName>`

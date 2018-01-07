@@ -14,7 +14,7 @@ This is a follow up of a request made in the MvvmCross repo: https://github.com/
 	- Updated all nuget packages
 	- Updated projects to newer versions of portable and Droid SDK
 	- Cleaned up the repository
-- **2014/04/14** First version of the project.
+- **2013/06/09** First version of the project.
 
 ## Description
 

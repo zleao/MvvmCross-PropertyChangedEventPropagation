@@ -1,6 +1,6 @@
-﻿using Cirrious.MvvmCross.ViewModels;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
 using PropertyChangedEventPropagation.Core.Attributes;
-using PropertyChangedEventPropagation.Core.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -72,7 +72,7 @@ namespace PropertyChangedEventPropagation.Core.ViewModels
 
             lock (methodDependencies)
             {
-                foreach (var method in this.GetType().GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
+                foreach (var method in this.GetType().GetMethods(BindingFlags.Instance | BindingFlags.Public))
                 {
                     if (!method.ReturnType.Equals(typeof(void)))
                         continue;

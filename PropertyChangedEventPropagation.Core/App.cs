@@ -1,8 +1,9 @@
-using Cirrious.CrossCore.IoC;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform.IoC;
 
 namespace PropertyChangedEventPropagation.Core
 {
-    public class App : Cirrious.MvvmCross.ViewModels.MvxApplication
+    public class App : MvxApplication
     {
         public override void Initialize()
         {
@@ -10,8 +11,8 @@ namespace PropertyChangedEventPropagation.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-				
-            RegisterAppStart<ViewModels.FirstViewModel>();
+
+            RegisterNavigationServiceAppStart<ViewModels.FirstViewModel>();
         }
     }
 }

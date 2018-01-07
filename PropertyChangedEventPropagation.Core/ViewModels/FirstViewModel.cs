@@ -1,8 +1,7 @@
-using Cirrious.MvvmCross.ViewModels;
+using MvvmCross.Core.ViewModels;
 using PropertyChangedEventPropagation.Core.Attributes;
 using PropertyChangedEventPropagation.Core.Extensions;
 using System.Collections.ObjectModel;
-using System.Threading;
 using System.Windows.Input;
 
 namespace PropertyChangedEventPropagation.Core.ViewModels
@@ -38,7 +37,7 @@ namespace PropertyChangedEventPropagation.Core.ViewModels
             }
         }
         private string _lastName;
-        
+
         [DependsOn("FirstName")]
         [DependsOn("LastName")]
         public string FullName
@@ -141,7 +140,7 @@ namespace PropertyChangedEventPropagation.Core.ViewModels
                 !NamesList.Contains(FullName))
             {
                 NamesList.Add(FullName);
-                
+
                 FirstName = null;
                 LastName = null;
             }
